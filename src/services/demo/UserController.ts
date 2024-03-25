@@ -15,7 +15,7 @@ export async function queryUserList(
   },
   options?: { [key: string]: any },
 ) {
-  return request<API.Result_PageInfo_UserInfo__>('/api/v1/queryUserList', {
+  return request<API.Result_PageInfo_UserInfo__>('http://0.0.0.0:8080', {
     method: 'GET',
     params: {
       ...params,
