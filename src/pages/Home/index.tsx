@@ -3,6 +3,7 @@ import { trim } from '@/utils/format';
 import { PageContainer } from '@ant-design/pro-components';
 import { useModel } from '@umijs/max';
 import styles from './index.less';
+import { AddModel } from './components/AddModel';
 
 const HomePage: React.FC = () => {
   const { name } = useModel('global');
@@ -11,6 +12,7 @@ const HomePage: React.FC = () => {
       <div className={styles.container}>
         <Guide name={trim(name)} />
       </div>
+      <AddModel/>
     </PageContainer>
   );
 };

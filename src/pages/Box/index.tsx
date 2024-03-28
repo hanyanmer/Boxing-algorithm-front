@@ -92,7 +92,7 @@ const TableList: React.FC<unknown> = () => {
   const [selectedRowsState, setSelectedRows] = useState<API.UserInfo[]>([]);
   const columns: ProDescriptionsItemProps<API.UserInfo>[] = [
     {
-      title: '名称',
+      title: '箱子型号',
       dataIndex: 'name',
       tip: '名称是唯一的 key',
       formItemProps: {
@@ -105,19 +105,35 @@ const TableList: React.FC<unknown> = () => {
       },
     },
     {
-      title: '昵称',
-      dataIndex: 'nickName',
+      title: '长',
+      dataIndex: 'wlength',
       valueType: 'text',
+      hideInSearch:true,
     },
     {
-      title: '性别',
-      dataIndex: 'gender',
-      hideInForm: true,
-      valueEnum: {
-        0: { text: '男', status: 'MALE' },
-        1: { text: '女', status: 'FEMALE' },
-      },
+      title: '宽',
+      dataIndex: 'wwidth',
+      valueType: 'text',
+      hideInSearch:true,
     },
+    // {
+    //   title: '宽',
+    //   dataIndex: 'gender',
+    //   hideInForm: true,
+    //   valueEnum: {
+    //     0: { text: '男', status: 'MALE' },
+    //     1: { text: '女', status: 'FEMALE' },
+    //   },
+    // },
+    // {
+    //   title: '高',
+    //   dataIndex: 'gender',
+    //   hideInForm: true,
+    //   valueEnum: {
+    //     0: { text: '男', status: 'MALE' },
+    //     1: { text: '女', status: 'FEMALE' },
+    //   },
+    // },
     {
       title: '操作',
       dataIndex: 'option',
@@ -133,7 +149,7 @@ const TableList: React.FC<unknown> = () => {
             配置
           </a>
           <Divider type="vertical" />
-          <a href="">订阅警报</a>
+          <a href="">删除</a>
         </>
       ),
     },
@@ -142,7 +158,7 @@ const TableList: React.FC<unknown> = () => {
   return (
     <PageContainer
       header={{
-        title: 'CRUD 示例',
+        title: '箱子管理',
       }}
     >
       <ProTable<API.UserInfo>
@@ -169,8 +185,11 @@ const TableList: React.FC<unknown> = () => {
             sorter,
             filter,
           });
+
+
           return {
-            data: data?.list || [],
+            // data: data?.list || [],
+            data:[{name:'紫云',wlength:12,wwidth:12}],
             success,
           };
         }}

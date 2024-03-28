@@ -7,7 +7,7 @@ export default defineConfig({
   initialState: {},
   request: {},
   layout: {
-    title: '@umijs/max',
+    title: '装箱系统',
   },
   routes: [
     {
@@ -20,14 +20,14 @@ export default defineConfig({
       component: './Home',
     },
     {
-      name: '权限演示',
+      name: '权限管理',
       path: '/access',
       component: './Access',
     },
     {
-      name: ' CRUD 示例',
-      path: '/table',
-      component: './Table',
+      name: '箱子',
+      path: '/box',
+      component: './Box',
     },
   ],
   npmClient: 'yarn',
