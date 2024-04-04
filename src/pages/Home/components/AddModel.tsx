@@ -38,34 +38,31 @@ export function AddModel() {
           });
         });
       }
-      _addressList.push(_box);
+      console.log('item', item);
+      _addressList.push({
+        box: _box,
+        addressName: item?.addressName,
+      });
     });
     console.log(_addressList, '_addressLlist');
     const params = {
-      // ...v,
-      // addressList: _addressList,
-      addressList: [
-        {
-          box: { boxWidth: 13, boxHeight: 12, boxLength: 12, boxNum: '12' },
-        },
-      ],
+      addressList: _addressList,
       container: {
-        frontLength: v?.frontLength || 123,
-        frontWidth: v?.frontWidth || 123,
-        frontHeight: v?.frontHeight || 123,
-        middleLength: v?.middleLength || 123,
-        middleWidth: v?.middleWidth || 123,
-        middleHeight: v?.middleHeight || 123,
-        tailLength: v?.tailLength || 123,
-        tailWidth: v?.tailWidth || 123,
-        tailHeight: v?.tailHeight || 123,
+        frontLength: v?.frontLength,
+        frontWidth: v?.frontWidth,
+        frontHeight: v?.frontHeight,
+        middleLength: v?.middleLength,
+        middleWidth: v?.middleWidth,
+        middleHeight: v?.middleHeight,
+        tailLength: v?.tailLength,
+        tailWidth: v?.tailWidth,
+        tailHeight: v?.tailHeight,
       },
       arrageGap: v?.arrageGap,
-      statusList: [1, 2, 3],
-      // statusList,
+      statusList,
     };
     console.log('params', params);
-    // return;
+    return;
     // v?.checkbox-group
     Api.UserController.submitModel(params as any);
   };
@@ -266,7 +263,6 @@ export function AddModel() {
                         </div>
                       );
                     } else {
-                      console.log('2');
                       return (
                         <div style={{ display: 'inline-grid' }}>
                           <Space>
