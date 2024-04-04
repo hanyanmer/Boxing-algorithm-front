@@ -1,10 +1,10 @@
 import Api from '@/services/demo/index';
+import type { ProFormInstance } from '@ant-design/pro-components';
 import {
   ProCard,
   ProForm,
   ProFormDependency,
   ProFormDigit,
-  ProFormInstance,
   ProFormList,
   ProFormRadio,
   ProFormSelect,
@@ -24,9 +24,9 @@ export function AddModel() {
 
   const onFinish = async (v) => {
     console.log(v, 'v');
-    let _addressList: any = [];
+    const _addressList: any = [];
     v?.addressList.map((item) => {
-      let _box = [];
+      const _box = [];
       if (item?.box) {
         item?.box?.map((_item) => {
           console.log('_item', _item);
@@ -62,14 +62,13 @@ export function AddModel() {
       statusList,
     };
     console.log('params', params);
-    return;
     // v?.checkbox-group
     Api.UserController.submitModel(params as any);
   };
   const onValuesChange = (changeValues: any) => {
     console.log(changeValues, 'hahah', typeof changeValues, changeValues.checkboxGroup);
 
-    let v = changeValues.checkboxGroup;
+    const v = changeValues.checkboxGroup;
     if (!changeValues.checkboxGroup) {
       return;
     }
@@ -87,7 +86,7 @@ export function AddModel() {
 
   // 这里没有实时生效
   const ondbClickGesture = (index: number) => {
-    let temp = setStatusList;
+    const temp = setStatusList;
     temp.splice(index, 1);
     console.log('temp', temp);
     setStatusList(() => {
@@ -266,9 +265,9 @@ export function AddModel() {
                       return (
                         <div style={{ display: 'inline-grid' }}>
                           <Space>
-                            <ProFormDigit name="boxLength" label="宽度" width="md"></ProFormDigit>
-                            <ProFormDigit name="boxWidth" label="高度" width="md"></ProFormDigit>
-                            <ProFormDigit name="boxHeight" label="深度" width="md"></ProFormDigit>
+                            <ProFormDigit name="boxLength" label="宽度" width="md" />
+                            <ProFormDigit name="boxWidth" label="高度" width="md" />
+                            <ProFormDigit name="boxHeight" label="深度" width="md" />
                           </Space>
                         </div>
                       );
@@ -310,7 +309,7 @@ export function AddModel() {
         colSpan={{ xs: 24, sm: 24, md: 24, lg: 24, xl: 24 }}
         style={{ marginBlockEnd: 8 }}
       >
-        <ProFormSelect label="一键查询汽车信息" labelCol={{ span: 6 }} width="md"></ProFormSelect>
+        <ProFormSelect label="一键查询汽车信息" labelCol={{ span: 6 }} width="md" />
         <ProCard
           title="车头信息"
           bordered
@@ -321,9 +320,9 @@ export function AddModel() {
           bodyStyle={{ paddingBlockEnd: 0 }}
         >
           <ProForm.Group>
-            <ProFormDigit name="frontLength" label="宽度" width="md"></ProFormDigit>
-            <ProFormDigit name="frontWidth" label="高度" width="md"></ProFormDigit>
-            <ProFormDigit name="frontHeight" label="深度" width="md"></ProFormDigit>
+            <ProFormDigit name="frontLength" label="宽度" width="md" />
+            <ProFormDigit name="frontWidth" label="高度" width="md" />
+            <ProFormDigit name="frontHeight" label="深度" width="md" />
           </ProForm.Group>
         </ProCard>
         {/* container */}
@@ -337,9 +336,9 @@ export function AddModel() {
           bodyStyle={{ paddingBlockEnd: 0 }}
         >
           <ProForm.Group>
-            <ProFormDigit name="middleLength" label="宽度" width="md"></ProFormDigit>
-            <ProFormDigit name="middleWidth" label="高度" width="md"></ProFormDigit>
-            <ProFormDigit name="middleHeight" label="深度" width="md"></ProFormDigit>
+            <ProFormDigit name="middleLength" label="宽度" width="md" />
+            <ProFormDigit name="middleWidth" label="高度" width="md" />
+            <ProFormDigit name="middleHeight" label="深度" width="md" />
           </ProForm.Group>
         </ProCard>
         <ProCard
@@ -352,9 +351,9 @@ export function AddModel() {
           bodyStyle={{ paddingBlockEnd: 0 }}
         >
           <ProForm.Group>
-            <ProFormDigit name="tailLength" label="宽度" width="md"></ProFormDigit>
-            <ProFormDigit name="tailWidth" label="高度" width="md"></ProFormDigit>
-            <ProFormDigit name="tailHeight" label="深度" width="md"></ProFormDigit>
+            <ProFormDigit name="tailLength" label="宽度" width="md" />
+            <ProFormDigit name="tailWidth" label="高度" width="md" />
+            <ProFormDigit name="tailHeight" label="深度" width="md" />
           </ProForm.Group>
         </ProCard>
       </ProCard>
