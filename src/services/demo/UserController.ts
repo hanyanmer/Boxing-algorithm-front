@@ -3,6 +3,68 @@
 import { request } from '@umijs/max';
 
 /** 此处后端没有提供注释 GET /api/v1/queryUserList */
+// export async function submitModel(
+//   params: {
+//     // query
+//     /** keyword */
+//     // keyword?: string;
+//     // /** current */
+//     // current?: number;
+//     // /** pageSize */
+//     // pageSize?: number;
+//   },
+//   options?: { [key: string]: any },
+// ) {
+//   // return request<API.Result_PageInfo_UserInfo__>('http://10.100.143.33:8080/submit', {
+//   //   method: 'POST',
+//   //   params: {
+//   //     ...params,
+//   //   },
+//   //   ...(options || {}),
+//   // });
+//   return request<API.Result_UserInfo_>('http://10.100.143.33:8080/submit', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     data: body,
+//     ...(options || {}),
+//   });
+// }
+export async function submitModel(body?: API.UserInfoVO, options?: { [key: string]: any }) {
+  return request<API.Result_UserInfo_>('http://localhost:8000/api/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      credentials: 'include',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+export async function getCarInfoList(
+  params: {
+    // query
+    /** keyword */
+    keyword?: string;
+    /** current */
+    current?: number;
+    /** pageSize */
+    pageSize?: number;
+  },
+  options?: { [key: string]: any },
+) {
+  return request<API.Result_PageInfo_UserInfo__>('http://10.100.143.33:8080/getCarInfoList', {
+    method: 'POST',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}
+
+// ================================
+
 export async function queryUserList(
   params: {
     // query
@@ -15,7 +77,7 @@ export async function queryUserList(
   },
   options?: { [key: string]: any },
 ) {
-  return request<API.Result_PageInfo_UserInfo__>('http://0.0.0.0:8080', {
+  return request<API.Result_PageInfo_UserInfo__>('http://10.100.143.33:8080', {
     method: 'GET',
     params: {
       ...params,
@@ -25,10 +87,7 @@ export async function queryUserList(
 }
 
 /** 此处后端没有提供注释 POST /api/v1/user */
-export async function addUser(
-  body?: API.UserInfoVO,
-  options?: { [key: string]: any },
-) {
+export async function addUser(body?: API.UserInfoVO, options?: { [key: string]: any }) {
   return request<API.Result_UserInfo_>('/api/v1/user', {
     method: 'POST',
     headers: {

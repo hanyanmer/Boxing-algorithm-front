@@ -31,4 +31,12 @@ export default defineConfig({
     },
   ],
   npmClient: 'yarn',
+
+  proxy: {
+    '/api/': {
+      target: 'http://10.100.143.33:8080/',
+      changeOrigin: true,
+      pathRewrite: { '^/api': '' },
+    },
+  },
 });
