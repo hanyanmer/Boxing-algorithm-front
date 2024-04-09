@@ -11,7 +11,7 @@ import {
 } from '@ant-design/pro-components';
 import { history } from '@umijs/max';
 import { Alert, Button, Col, Space, Tag } from 'antd';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export function AddModel() {
   const formRef = useRef<ProFormInstance>();
@@ -68,7 +68,7 @@ export function AddModel() {
     // v?.checkbox-group
     setLoading(true);
 
-    history.push('/model');
+    history.push('/home');
 
     return;
     try {
@@ -121,7 +121,6 @@ export function AddModel() {
 
   return (
     <>
-      {/* <img alt="helo" src={url} /> */}
       <ProForm
         loading={loading}
         onFinish={onFinish}

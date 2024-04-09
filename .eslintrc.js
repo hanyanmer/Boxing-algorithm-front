@@ -1,16 +1,29 @@
-// module.exports = {
-//   extends: require.resolve('@umijs/max/eslint'),
-// };
 module.exports = {
-  extends: [require.resolve('@umijs/fabric/dist/eslint')],
-
-  // in antd-design-pro
-  globals: {
-    ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION: true,
-    page: true,
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
   },
-
+  extends: ["eslint:recommended", "standard", "prettier"],
+  overrides: [
+    {
+      env: {
+        node: true,
+      },
+      files: [".eslintrc.{js,cjs}"],
+      parserOptions: {
+        sourceType: "script",
+      },
+    },
+  ],
+  plugins: ["prettier"],
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+  },
   rules: {
-    // your rules
+    "prettier/prettier": "error",
+    "@typescript-eslint/no-unused-vars":"off"
   },
 };
+
