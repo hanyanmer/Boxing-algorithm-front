@@ -15,6 +15,8 @@ import UpdateForm, { FormValueType } from './components/UpdateForm';
 const { addUser, queryUserList, deleteUser, modifyUser } =
   services.UserController;
 
+  const {getAddressList}  = services.AddressController
+
 /**
  * 添加节点
  * @param fields
@@ -158,7 +160,7 @@ const TableList: React.FC<unknown> = () => {
   return (
     <PageContainer
       header={{
-        title: '箱子管理',
+        title: '地址管理',
       }}
     >
       <ProTable<API.UserInfo>
@@ -178,13 +180,14 @@ const TableList: React.FC<unknown> = () => {
           </Button>,
         ]}
         request={async (params, sorter, filter) => {
-          const { data, success } = await queryUserList({
+          const { data, success } = await getAddressList({
             ...params,
             // FIXME: remove @ts-ignore
             // @ts-ignore
             sorter,
             filter,
           });
+          console.log('address data',data)
 
 
           return {

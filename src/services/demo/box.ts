@@ -62,7 +62,13 @@ export async function queryBoxList(
   options?: { [key: string]: any },
 ) {
   return request<API.Result_PageInfo_UserInfo__>('/api/bins', {
+  // return request<API.Result_PageInfo_UserInfo__>('http://10.100.143.33:8080/bins', {
     method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin':'*'
+      
+    },
     params: {
       ...params,
     },

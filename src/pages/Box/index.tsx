@@ -8,9 +8,12 @@ import {
   ProTable,
 } from '@ant-design/pro-components';
 import { Button, Divider, Drawer, message } from 'antd';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import CreateForm from './components/CreateForm';
 import UpdateForm, { FormValueType } from './components/UpdateForm';
+
+import Api from '@/services/demo/index';
+
 
 const { addUser, queryUserList, deleteUser, modifyUser } =
   services.UserController;
@@ -155,6 +158,16 @@ const TableList: React.FC<unknown> = () => {
     },
   ];
 
+
+  useEffect(() => {
+    Api.BoxController.queryBoxList({}).then((res) => {
+      console.log('queryBoxList boxres', res);
+      // if(res?.status){
+
+      // }
+    });
+  }, []);
+
   return (
     <PageContainer
       header={{
@@ -162,10 +175,10 @@ const TableList: React.FC<unknown> = () => {
       }}
     >
       <ProTable<API.UserInfo>
-        headerTitle="查询表格"
+        headerTitle="箱子数据"
         actionRef={actionRef}
         rowKey="id"
-        search={{
+        search={{ 
           labelWidth: 120,
         }}
         toolBarRender={() => [
